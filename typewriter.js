@@ -4,6 +4,7 @@ var j=0;
 var word = document.getElementById('word');
 var wordBackground=document.getElementById('wordBackground');
 var wish=document.getElementById('wish');
+var initOpacity=0.0;
 
 word.style.marginTop=document.documentElement.clientHeight/3+'px';
 word.style.marginLeft=document.documentElement.clientWidth*0.15+'px';
@@ -11,7 +12,7 @@ wordBackground.style.marginTop=document.documentElement.clientHeight/3-5+'px';
 wordBackground.style.marginLeft=document.documentElement.clientWidth*0.15+'px';
 wish.style.marginLeft=document.documentElement.clientWidth*0.15+'px';
 wish.style.marginTop=document.documentElement.clientHeight/3+150+'px';
-wish.style.opacity=0.0;
+wish.style.opacity=initOpacity;
 
 function typing(){
     if (i <= str.length) {
@@ -36,6 +37,10 @@ function wordEnd() {
 }
 
 setTimeout(typing,1500);
+//实现淡入效果
 setTimeout(function () {
-    wish.style.opacity=1.0;
+    setInterval(function () {
+        wish.style.opacity=initOpacity;
+        initOpacity+=0.01;
+    },25);
 },10000);
