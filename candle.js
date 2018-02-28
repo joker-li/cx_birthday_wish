@@ -1,12 +1,8 @@
-
 function drawCandles() {
 	
 }
 
 function clearInit() {
-	// word.style.visibility="hidden";
-	// wordBackground.style.visibility="hidden";
-	// wish.style.visibility="hidden";
 	var wordOpacity=1.0;
 	var wordBackgroundOpacity=0.2;
 	var j=setInterval(function () {
@@ -15,7 +11,7 @@ function clearInit() {
 		word.style.opacity=wordOpacity;
 		wordBackground.style.opacity=wordBackgroundOpacity;
 		wish.style.opacity=wordOpacity;
-
+		attention.style.opacity=wordOpacity;
 		if(wordOpacity<=0){
 			clearInterval(j);
 		}
