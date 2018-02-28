@@ -6,6 +6,9 @@ var particularNum=80;
 // 画布
 var canvas=document.getElementById('myCanvas');
 var ctx=canvas.getContext('2d');
+
+var clearParticular=false;
+
 // 创建背景渐变
 var grd=ctx.createLinearGradient(0,0,0,window.innerHeight);
 grd.addColorStop(0,'#fad0c4');
@@ -71,44 +74,49 @@ function createLine() {
 }
 
 function draw() {
-	// 背景
-	ctx.fillStyle=grd;
-	ctx.fillRect(0,0,window.innerWidth,window.innerHeight);
-	// 遍历粒子连线进行绘制
-	lines.forEach(function (templine) {
-		if(distance(templine.from,templine.to)<=200){
-			ctx.strokeStyle='#fff';
-			ctx.lineWidth=1;
-			ctx.globalAlpha=1.0-distance(templine.from,templine.to)/200;
+	if(!clearParticular){
+		// 背景
+		ctx.fillStyle=grd;
+		ctx.fillRect(0,0,window.innerWidth,window.innerHeight);
+		// 遍历粒子连线进行绘制
+		lines.forEach(function (templine) {
+			if(distance(templine.from,templine.to)<=200){
+				ctx.strokeStyle='#fff';
+				ctx.lineWidth=1;
+				ctx.globalAlpha=1.0-distance(templine.from,templine.to)/200;
+				ctx.beginPath();
+				ctx.moveTo(templine.from.x,templine.from.y);
+				ctx.lineTo(templine.to.x,templine.to.y);
+				ctx.stroke();
+			}
+		});
+		// 绘制粒子
+		var temp;
+		ctx.globalAlpha=1.0;
+		for(var i=0;i<particularNum;i++){
+			temp=particulars[i];
+
+			temp.x+=temp.vx;
+			temp.y+=temp.vy;
+
+			if(temp.x>window.innerWidth || temp.x<0){
+				temp.vx=-temp.vx;
+			}
+			if(temp.y>window.innerHeight || temp.y<0){
+				temp.vy=-temp.vy;
+			}
+
+			ctx.fillStyle=temp.color;
 			ctx.beginPath();
-			ctx.moveTo(templine.from.x,templine.from.y);
-			ctx.lineTo(templine.to.x,templine.to.y);
-			ctx.stroke();
+			ctx.arc(temp.x,temp.y,temp.radius,0,Math.PI*2,true);
+			ctx.fill();
 		}
-	});
-	// 绘制粒子
-	var temp;
-	ctx.globalAlpha=1.0;
-	for(var i=0;i<particularNum;i++){
-		temp=particulars[i];
-
-		temp.x+=temp.vx;
-		temp.y+=temp.vy;
-
-		if(temp.x>window.innerWidth || temp.x<0){
-			temp.vx=-temp.vx;
-		}
-		if(temp.y>window.innerHeight || temp.y<0){
-			temp.vy=-temp.vy;
-		}
-
-		ctx.fillStyle=temp.color;
-		ctx.beginPath();
-		ctx.arc(temp.x,temp.y,temp.radius,0,Math.PI*2,true);
-		ctx.fill();
+	}else{
+		ctx.fillStyle='rgba(0,0,0,0.01)';
+		ctx.fillRect(0,0,window.innerWidth,window.innerHeight);
 	}
-
 	window.requestAnimationFrame(draw);
+
 }
 // 计算两粒子距离
 function distance(particular1,particular2) {

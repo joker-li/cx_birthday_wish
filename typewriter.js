@@ -1,4 +1,4 @@
-var str = '陈霞，生日快乐。<br>你在我心中永远都是最美的 ヾ(ﾟ∀ﾟゞ)<br>请调大媒体音量，然后连续点击屏幕ヾ(◍°∇°◍)ﾉﾞ';
+var str = '陈霞，生日快乐。<br>你在我心中永远都是最美的 ヾ(ﾟ∀ﾟゞ)<br>（请调大音量，然后连续点击屏幕（有惊喜哦~））';
 var i = 0;
 var j=0;
 var word = document.getElementById('word');
@@ -39,8 +39,14 @@ function wordEnd() {
 setTimeout(typing,1500);
 //实现淡入效果
 setTimeout(function () {
-    setInterval(function () {
+    var i=setInterval(function () {
         wish.style.opacity=initOpacity;
-        initOpacity+=0.01;
+        if(initOpacity<1.0){
+            initOpacity+=0.01;
+        }
+        if(initOpacity>=1.0){
+            clearInterval(i);
+        }
     },25);
+    
 },10000);

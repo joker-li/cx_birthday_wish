@@ -1,5 +1,5 @@
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
-var time=0;
+var time=0,clickTimes=0;
 var wish1=document.getElementById('wish1');
 var wish2=document.getElementById('wish2');
 var wish3=document.getElementById('wish3');
@@ -25,11 +25,12 @@ var normalColor='#fff';
     // 音调依次递增或者递减处理需要的参数
     var start = 0, direction = 1;
     
-    // 鼠标hover我们的按钮的时候
-    // eleButton.addEventListener('mouseenter', function () {
     document.onclick=function audioplay() {
         time++;
-        if(time>=7) time=1;
+        if(time>=7){
+            time=1;
+            clickTimes++;
+        }
         changeColor();
         // 当前频率
         var frequency = arrFrequency[start];
@@ -63,6 +64,11 @@ var normalColor='#fff';
         gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1);
         // 1秒后完全停止声音
         oscillator.stop(audioCtx.currentTime + 1);
+
+        if(clickTimes==3 && time==6){
+            clearInit();
+            drawCandles();
+        }
     };
 })();
 
