@@ -1,9 +1,10 @@
-var str = '陈霞，生日快乐。<br>你在我心中永远都是最美的 ヾ(ﾟ∀ﾟゞ)<br>（请调大音量，然后连续点击屏幕（有惊喜哦~））';
+var str = '陈霞，生日快乐。<br>你在我心中永远都是最美的 ヾ(ﾟ∀ﾟゞ)<br>我……想你。';
 var i = 0;
 var j=0;
 var word = document.getElementById('word');
 var wordBackground=document.getElementById('wordBackground');
 var wish=document.getElementById('wish');
+var attention=document.getElementById('attention');
 var initOpacity=0.0;
 
 word.style.marginTop=document.documentElement.clientHeight/3+'px';
@@ -12,7 +13,10 @@ wordBackground.style.marginTop=document.documentElement.clientHeight/3-5+'px';
 wordBackground.style.marginLeft=document.documentElement.clientWidth*0.15+'px';
 wish.style.marginLeft=document.documentElement.clientWidth*0.15+'px';
 wish.style.marginTop=document.documentElement.clientHeight/3+150+'px';
+attention.style.marginTop=document.documentElement.clientHeight/3+250+'px';
+attention.style.marginLeft=document.documentElement.clientWidth*0.15+'px';
 wish.style.opacity=initOpacity;
+attention.style.opacity=initOpacity;
 
 function typing(){
     if (i <= str.length) {
@@ -41,10 +45,11 @@ setTimeout(typing,1500);
 setTimeout(function () {
     var i=setInterval(function () {
         wish.style.opacity=initOpacity;
-        if(initOpacity<1.0){
+        attention.style.opacity=initOpacity-0.7;
+        if(initOpacity<1.7){
             initOpacity+=0.01;
         }
-        if(initOpacity>=1.0){
+        if(initOpacity>=1.7){
             clearInterval(i);
         }
     },25);

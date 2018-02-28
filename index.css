@@ -58,3 +58,12 @@ body{
 
 	width: 16.6%;
 }
+#attention{
+	font-size: 30px;
+	text-align: center;
+	color: white;
+	font-family: "MyriadSetPro";
+	position: absolute;
+	z-index: 1;
+	width: 70%;
+}
