@@ -1,5 +1,13 @@
 function drawCandles() {
-	
+	setTimeout(function () {
+		setInterval(function () {
+			var light=document.createElement('div');
+			light.className='light';
+			setLight(light);
+			var lights=document.getElementById('lights');
+			lights.appendChild(light);
+		},1000);
+	},5000);
 }
 
 function clearInit() {
@@ -17,6 +25,16 @@ function clearInit() {
 		}
 	},25);
 
-
 	clearParticular=true;
+	setTimeout(function () {
+		wordBackground.parentNode.removeChild(wordBackground);
+		word.parentNode.removeChild(word);
+		wish.parentNode.removeChild(wish);
+		attention.parentNode.removeChild(attention);
+	},4000);
+}
+
+function setLight(elem) {
+	elem.style.marginTop=Math.random()*window.innerHeight+'px';
+	elem.style.marginLeft=Math.random()*window.innerWidth+'px';
 }

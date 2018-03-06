@@ -8,6 +8,7 @@ var canvas=document.getElementById('myCanvas');
 var ctx=canvas.getContext('2d');
 
 var clearParticular=false;
+var blackHeight=0;
 
 // 创建背景渐变
 var grd=ctx.createLinearGradient(0,0,0,window.innerHeight);
