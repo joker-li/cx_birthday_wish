@@ -1,9 +1,25 @@
+var sHeight=window.innerHeight/3;
+var space=40;
+var lightCPos= [[400+space,sHeight+0.5*space],
+				[400,sHeight],[400-space,sHeight],
+				[400-2.5*space,sHeight+space],
+				[400-3*space,sHeight+2*space],[400-3*space,sHeight+space*3],[400-3*space,sHeight+space*4],
+				[400-2.5*space,sHeight+space*5],
+				[400-space,sHeight+space*6],[400,sHeight+space*6],
+				[400+space,sHeight+space*5.5],
+				//C和X字母的分界
+				[400+3*space,sHeight],[400+3.9*space,sHeight+space],[400+4.8*space,sHeight+space*2],[400+5.7*space,sHeight+space*3],[400+6.6*space,sHeight+space*4],[400+7.5*space,sHeight+space*5],[400+8.4*space,sHeight+space*6],
+				[400+3*space,sHeight+6*space],[400+3.9*space,sHeight+5*space],[400+4.8*space,sHeight+space*4],[400+5.7*space,sHeight+space*3],[400+6.6*space,sHeight+space*2],[400+7.5*space,sHeight+space],[400+8.4*space,sHeight]];
+var index=0;
+
 function drawCandles() {
 	setTimeout(function () {
 		setInterval(function () {
 			var light=document.createElement('div');
 			light.className='light';
 			setLight(light);
+			index++;
+			// if(index>=11) index=0;
 			var lights=document.getElementById('lights');
 			lights.appendChild(light);
 		},1000);
@@ -35,6 +51,8 @@ function clearInit() {
 }
 
 function setLight(elem) {
-	elem.style.marginTop=Math.random()*window.innerHeight+'px';
-	elem.style.marginLeft=Math.random()*window.innerWidth+'px';
+	// elem.style.marginTop=Math.random()*window.innerHeight+'px';
+	// elem.style.marginLeft=Math.random()*window.innerWidth+'px';
+	elem.style.marginLeft=lightCPos[index][0]+'px';
+	elem.style.marginTop=lightCPos[index][1]+'px';
 }
