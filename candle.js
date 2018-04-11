@@ -232,7 +232,7 @@ var ParticlePool = (function() {
     }
     context.closePath();
     // create the fill
-    context.fillStyle = '#ea80b0';
+    context.fillStyle = '#fff';
     context.fill();
     // create the image
     var image = new Image();
@@ -240,6 +240,8 @@ var ParticlePool = (function() {
     return image;
   })();
   
+  a=0.01;
+
   // render that thing!
   function render() {
     // next animation frame
@@ -253,8 +255,14 @@ var ParticlePool = (function() {
     // clear canvas
     context.clearRect(0, 0, canvas.width, canvas.height);
 
-    context.fillStyle='#292929';
+    //context.fillStyle='#292929';
+    
+    context.fillStyle='#ff9a9e';
+    
+    context.globalAlpha=a;
     context.fillRect(0,0,canvas.width,canvas.height);
+    a+=0.005;
+    context.globalAlpha=1.0;
     
     // create new particles
     var amount = particleRate * deltaTime;
