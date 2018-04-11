@@ -12,6 +12,8 @@ body{
 	font-family: 'Microsoft Yahei';
 }
 
+
+
 #myCanvas{
 	position: absolute;
 	z-index: -1;

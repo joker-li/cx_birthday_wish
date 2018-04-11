@@ -67,7 +67,7 @@ var normalColor='#fff';
 
         if(clickTimes==3 && time==6){
             clearInit();
-            drawCandles();
+            
         }
     };
 })();
