@@ -83,10 +83,10 @@ setTimeout(function () {
         wish.style.opacity=initOpacity;
         timer.style.opacity=initOpacity;
         attention.style.opacity=initOpacity-0.7;
-        if(initOpacity<1.7){
+        if(initOpacity<1.5){
             initOpacity+=0.01;
         }
-        if(initOpacity>=1.7){
+        if(initOpacity>=1.49){
             clearInterval(i);
         }
         // leftTimer(2018,4,17,0,0,0)
