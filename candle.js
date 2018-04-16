@@ -257,7 +257,11 @@ var ParticlePool = (function() {
 
     //context.fillStyle='#292929';
     
-    context.fillStyle='#ff9a9e';
+    // context.fillStyle='#ff9a9e';
+    var grd1=context.createLinearGradient(0,0,0,window.innerHeight);
+    grd1.addColorStop(0,'#fecfef');
+    grd1.addColorStop(1,'#ff9a9e');
+    context.fillStyle=grd1;
     
     context.globalAlpha=a;
     context.fillRect(0,0,canvas.width,canvas.height);
