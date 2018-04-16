@@ -54,7 +54,7 @@ body{
 
 	width: 16.6%;
 }
-#attention{
+#attention,#timer{
 	font-size: 30px;
 	text-align: center;
 	color: white;

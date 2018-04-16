@@ -5,6 +5,7 @@ var word = document.getElementById('word');
 var wordBackground=document.getElementById('wordBackground');
 var wish=document.getElementById('wish');
 var attention=document.getElementById('attention');
+var timer=document.getElementById('timer');
 var initOpacity=0.0;
 
 word.style.marginTop=document.documentElement.clientHeight/3+'px';
@@ -13,10 +14,18 @@ wordBackground.style.marginTop=document.documentElement.clientHeight/3-5+'px';
 wordBackground.style.marginLeft=document.documentElement.clientWidth*0.15+'px';
 wish.style.marginLeft=document.documentElement.clientWidth*0.15+'px';
 wish.style.marginTop=document.documentElement.clientHeight/3+150+'px';
-attention.style.marginTop=document.documentElement.clientHeight/3+250+'px';
+
+timer.style.marginTop=document.documentElement.clientHeight/3+230+'px';
+timer.style.marginLeft=document.documentElement.clientWidth*0.15+'px';
+
+attention.style.marginTop=document.documentElement.clientHeight/3+280+'px';
 attention.style.marginLeft=document.documentElement.clientWidth*0.15+'px';
+
 wish.style.opacity=initOpacity;
+timer.style.opacity=initOpacity;
 attention.style.opacity=initOpacity;
+
+timer.style.color='#f38077';
 
 function typing(){
     if (i <= str.length) {
@@ -40,18 +49,50 @@ function wordEnd() {
     setTimeout(wordEnd,1000);
 }
 
+function leftTimer(year,month,day,hour,minute,second){ 
+ var leftTime = (new Date(year,month-1,day,hour,minute,second)) - (new Date()); //计算剩余的毫秒数 
+ var days = parseInt(leftTime / 1000 / 60 / 60 / 24 , 10); //计算剩余的天数 
+ var hours = parseInt(leftTime / 1000 / 60 / 60 % 24 , 10); //计算剩余的小时 
+ var minutes = parseInt(leftTime / 1000 / 60 % 60, 10);//计算剩余的分钟 
+ var seconds = parseInt(leftTime / 1000 % 60, 10);//计算剩余的秒数 
+ days = checkTime(days); 
+ hours = checkTime(hours); 
+ minutes = checkTime(minutes); 
+ seconds = checkTime(seconds); 
+ // setInterval("leftTimer(2017,10,28,0,0,0)",1000); 
+ timer.innerHTML = "From 18 To 19: (&nbsp;"+days+" days&nbsp;&nbsp;&nbsp;" + hours+" hours&nbsp;&nbsp;&nbsp;" + minutes+" minutes&nbsp;&nbsp;&nbsp;"+seconds+" seconds&nbsp;)"; 
+} 
+function checkTime(i){ //将0-9的数字前面加上0，例1变为01 
+ if(i<10) 
+ { 
+  i = "0" + i; 
+ } 
+ return i; 
+} 
+
+
 setTimeout(typing,1500);
+
 //实现淡入效果
 setTimeout(function () {
     var i=setInterval(function () {
         wish.style.opacity=initOpacity;
-        attention.style.opacity=initOpacity-0.7;
+        timer.style.opacity=initOpacity;
+        attention.style.opacity=initOpacity-1.0;
         if(initOpacity<1.7){
             initOpacity+=0.01;
         }
-        if(initOpacity>=1.7){
-            clearInterval(i);
-        }
+        // if(initOpacity>=1.7){
+            // clearInterval(i);
+            leftTimer(2018,4,17,0,0,0)
+        // }
+
+        // leftTimer(2018,4,17,0,0,0)
     },25);
     
 },10000);
+
+// setTimeout(function () {
+//     setInterval("leftTimer(2018,4,17,0,0,0)",1000);
+// },10000)
+// leftTimer(2017,10,28,0,0,0);
