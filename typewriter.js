@@ -1,4 +1,4 @@
-var str = '萌萌，生日快乐~<br>佳雪销微照，初萌动早芒，<br>很高兴遇见你。';
+var str = '萌萌，生日快乐。<br>“佳雪销微照，初萌动早芒”，<br>很高兴遇见你。';
 var i = 0;
 var j=0;
 var word = document.getElementById('word');
