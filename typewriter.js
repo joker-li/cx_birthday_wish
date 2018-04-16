@@ -73,6 +73,10 @@ function checkTime(i){ //将0-9的数字前面加上0，例1变为01
 
 setTimeout(typing,1500);
 
+setTimeout(function () {
+    setInterval("leftTimer(2018,4,17,0,0,0)",1000);
+},1500)
+
 //实现淡入效果
 setTimeout(function () {
     var i=setInterval(function () {
@@ -84,9 +88,8 @@ setTimeout(function () {
         }
         if(initOpacity>=1.7){
             clearInterval(i);
-            
         }
-        leftTimer(2018,4,17,0,0,0)
+        // leftTimer(2018,4,17,0,0,0)
     },25);
     
 },10000);
