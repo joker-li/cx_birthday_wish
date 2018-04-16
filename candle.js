@@ -8,6 +8,7 @@ function clearInit() {
 		wordBackground.style.opacity=wordBackgroundOpacity;
 		wish.style.opacity=wordOpacity;
 		attention.style.opacity=wordOpacity;
+    timer.style.opacity=wordOpacity;
 		if(wordOpacity<=0){
 			clearInterval(j);
 		}
@@ -19,6 +20,7 @@ function clearInit() {
 		word.parentNode.removeChild(word);
 		wish.parentNode.removeChild(wish);
 		attention.parentNode.removeChild(attention);
+    timer.parentNode.removeChild(timer);
 	},4000);
 
   setTimeout(function(){

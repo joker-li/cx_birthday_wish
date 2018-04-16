@@ -18,14 +18,14 @@ wish.style.marginTop=document.documentElement.clientHeight/3+150+'px';
 timer.style.marginTop=document.documentElement.clientHeight/3+230+'px';
 timer.style.marginLeft=document.documentElement.clientWidth*0.15+'px';
 
-attention.style.marginTop=document.documentElement.clientHeight/3+280+'px';
+attention.style.marginTop=document.documentElement.clientHeight/3+360+'px';
 attention.style.marginLeft=document.documentElement.clientWidth*0.15+'px';
 
 wish.style.opacity=initOpacity;
 timer.style.opacity=initOpacity;
 attention.style.opacity=initOpacity;
 
-timer.style.color='#f38077';
+timer.style.color='#fa796f';
 
 function typing(){
     if (i <= str.length) {
@@ -60,7 +60,7 @@ function leftTimer(year,month,day,hour,minute,second){
  minutes = checkTime(minutes); 
  seconds = checkTime(seconds); 
  // setInterval("leftTimer(2017,10,28,0,0,0)",1000); 
- timer.innerHTML = "From 18 To 19: (&nbsp;"+days+" days&nbsp;&nbsp;&nbsp;" + hours+" hours&nbsp;&nbsp;&nbsp;" + minutes+" minutes&nbsp;&nbsp;&nbsp;"+seconds+" seconds&nbsp;)"; 
+ timer.innerHTML = "From 18 To 19&nbsp;:<br>(&nbsp;"+days+" days&nbsp;&nbsp;&nbsp;" + hours+" hours&nbsp;&nbsp;&nbsp;" + minutes+" minutes&nbsp;&nbsp;&nbsp;"+seconds+" seconds&nbsp;)"; 
 } 
 function checkTime(i){ //将0-9的数字前面加上0，例1变为01 
  if(i<10) 
@@ -78,16 +78,15 @@ setTimeout(function () {
     var i=setInterval(function () {
         wish.style.opacity=initOpacity;
         timer.style.opacity=initOpacity;
-        attention.style.opacity=initOpacity-1.0;
+        attention.style.opacity=initOpacity-0.7;
         if(initOpacity<1.7){
             initOpacity+=0.01;
         }
-        // if(initOpacity>=1.7){
-            // clearInterval(i);
-            leftTimer(2018,4,17,0,0,0)
-        // }
-
-        // leftTimer(2018,4,17,0,0,0)
+        if(initOpacity>=1.7){
+            clearInterval(i);
+            
+        }
+        leftTimer(2018,4,17,0,0,0)
     },25);
     
 },10000);
